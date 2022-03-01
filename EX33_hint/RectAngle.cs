@@ -36,10 +36,7 @@ namespace EX33_hint
         
         public static bool operator !=(RectAngle rectAngle1, RectAngle rectAngle2)
         {
-            return !(rectAngle1.width == rectAngle2.width
-                && rectAngle1.height == rectAngle2.height
-                || rectAngle1.width == rectAngle2.height
-                && rectAngle1.height == rectAngle2.width);
+            return !(rectAngle1 == rectAngle2);
         }
     }
 }
