@@ -38,5 +38,26 @@ namespace EX33_hint
         {
             return !(rectAngle1 == rectAngle2);
         }
+
+        public static RectAngle operator +(RectAngle rectAngle1, RectAngle rectAngle2)
+        {
+            int min = 0;
+            RectAngle[] box = new RectAngle[4];
+
+            //４パターンの横と縦の長さを入れる
+            box[0] = new RectAngle(rectAngle1.width + rectAngle2.width, MathF.Max(rectAngle1.height, rectAngle2.height));
+            box[1] = new RectAngle(rectAngle1.height + rectAngle2.height, MathF.Max(rectAngle1.width, rectAngle2.width));
+            box[2] = new RectAngle(rectAngle1.height + rectAngle1.width, MathF.Max(rectAngle1.width, rectAngle2.height));
+            box[3] = new RectAngle(rectAngle1.width + rectAngle2.height, MathF.Max(rectAngle1.height, rectAngle2.width));
+
+            for(int i = 1; i < box.Length; i++)
+            {
+                if(box[min].width * box[min].height > box[i].width * box[i].height)
+                {
+                    min = i;
+                }
+            }
+            return box[min];
+        }
     }
 }
